@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Tecnología</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --primario: #ff6b6b;
+            --secundario: #3498db;
+            --fondo: #ffffff;
+            --texto: #333333;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        #mega-menu {
+            background-color: var(--secundario);
+            color: white;
+            padding: 1rem;
+        }
+
+        .menu li {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a[category="nuevo"] {
+            color: yellow;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .banner {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner span {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.5rem;
+        }
+
+        /* Productos Destacados */
+        .productos {
+            padding: 2rem;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .producto {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .producto:hover {
+            transform: scale(1.05);
+        }
+
+        .producto__imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            
+        }
+
+        .precio--oferta {
+            color: var(--primario);
+            font-weight: bold;
+        }
+
+        .boton-agregar {
+            background-color: var(--secundario);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-agregar:hover {
+            background-color: var(--primario);
+        }
+
+        /* Filtros */
+        .filtros {
+            display: none;
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .filtros {
+                display: block;
+            }
+        }
+
+        /* Carrito Flotante */
+        .carrito {
+            position: fixed;
+            top: 50px;
+            right: -300px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            transition: right 0.3s ease;
+        }
+
+        .carrito.visible {
+            right: 0;
+        }
+
+        #btn-carrito {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primario);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secundario);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-productos {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="mega-menu">
+        <nav>
+            <ul class="menu">
+                <li><a href="#" category="nuevo">Electrodomésticos</a></li>
+                <li><a href="#">Moda</a></li>
+                <li><a href="#">Tecnología</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="banner">
+            <img src="bannerWepp1.PNG" alt="50% de descuento">
+            <span>50% de descuento</span>
+        </div>
+        <div class="banner">
+            <img src="bannerWepp2.PNG" alt="Envío gratis">
+            <span>Envío gratis</span>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="productos">
+        <h2>Productos Destacados</h2>
+        <div class="grid-productos">
+            <div class="producto">
+                <img src="islacopia.png" alt="Producto 1" class="producto__imagen">
+                <h3 class="producto__nombre">Laptop Gaming</h3>
+                <p class="precio--oferta">$999</p>
+                <button class="boton-agregar">Añadir al carrito</button>
+            </div>
+            <!-- Más productos... -->
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <aside class="filtros">
+        <h3>Filtrar por:</h3>
+        <ul>
+            <li><a href="#">Categoría</a></li>
+            <li><a href="#">Precio</a></li>
+        </ul>
+    </aside>
+
+    <!-- Carrito Flotante -->
+    <div id="carrito" class="carrito">
+        <h4>Carrito</h4>
+        <ul>
+            <li>Laptop Gaming - $999</li>
+        </ul>
+        <button>Cerrar</button>
+    </div>
+    <button id="btn-carrito">Ver Carrito</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Políticas de envío</p>
+        <p>Chat en vivo</p>
+    </footer>
+
+</body>
+
+</html>
